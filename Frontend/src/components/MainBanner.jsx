@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../assets/main_banner_bg.png";
+import banner from "../assets/main_banner_bg1.png";
 import banner_sm from "../assets/main_banner_bg_sm.png";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
@@ -10,7 +10,7 @@ const MainBanner = () => {
       <img
         src={banner}
         alt="Main site banner"
-        className=" w-full hidden md:block"
+        className=" w-full hidden md:block rounded-md xl:h-120"
       />
       <img
         src={banner_sm}
