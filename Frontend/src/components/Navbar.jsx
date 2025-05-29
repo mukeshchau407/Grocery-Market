@@ -16,7 +16,7 @@ const Navbar = () => {
     Navigate("/");
   };
   return (
-    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-18 py-4 border-b border-gray-300 bg-white relative transition-all">
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-18 py-4 border-b border-gray-300 bg-white sticky top-0 z-50 transition-all">
       <NavLink to="/" onClick={() => setOpen(false)}>
         {/* <img
           className="h-9"
@@ -30,7 +30,13 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden sm:flex items-center gap-8">
-        <NavLink className="hover:text-orange-500" to="/">
+        <NavLink
+          className="hover:text-orange-500"
+          to="/"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
           Home
         </NavLink>
         <NavLink className="hover:text-orange-500" to="/products">
