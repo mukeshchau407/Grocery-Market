@@ -2,7 +2,7 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 const newsletter = () => {
   return (
-    <div className="flex flex-col items-center rounded-2xl px-4 py-12 md:py-16 mx-2 lg:mx-auto my-30 bg-orange-100/50 ">
+    <div className="flex flex-col items-center rounded-2xl px-4 mx-2 mt-16 ">
       <div className="flex flex-col justify-center items-center text-center">
         <h1 className="text-4xl md:text-[40px] font-semibold">
           Never Miss a Deal!
