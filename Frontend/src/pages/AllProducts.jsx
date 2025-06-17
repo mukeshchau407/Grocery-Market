@@ -22,8 +22,10 @@ const AllProducts = () => {
     <div className="mt-8 flex flex-col">
       <div className="flex justify-center">
         <div className="flex flex-col items-center w-max">
-          <p>All Products</p>
+          <p className="text-2xl font-medium uppercase">All Products</p>
           <div className="w-18 h-0.5 bg-orange-500 rounded-full"></div>
+          <div className="w-14 h-0.5 bg-orange-500 rounded-full mt-0.5"></div>
+          <div className="w-10 h-0.5 bg-orange-500 rounded-full mt-0.5"></div>
         </div>
       </div>
 
