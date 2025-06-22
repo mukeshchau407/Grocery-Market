@@ -113,13 +113,24 @@ const Navbar = () => {
         )}
       </div>
 
-      <button
-        onClick={() => (open ? setOpen(false) : setOpen(true))}
-        aria-label="Menu"
-        className="sm:hidden transition-all duration-300"
-      >
-        {!open ? <FaBars /> : <FaTimes />}
-      </button>
+      <div className="flex items-center gap-6 sm:hidden">
+        <div
+          onClick={() => navigate("/cart")}
+          className="relative cursor-pointer"
+        >
+          <FaShoppingCart />
+          <button className="absolute -top-2 -right-2 text-[10px] text-white text-center bg-orange-500 w-[14px] h-[14px] rounded-full">
+            {getCartCount()}
+          </button>
+        </div>
+        <button
+          onClick={() => (open ? setOpen(false) : setOpen(true))}
+          aria-label="Menu"
+          className="transition-all duration-300"
+        >
+          {!open ? <FaBars /> : <FaTimes />}
+        </button>
+      </div>
 
       {/* Mobile Menu */}
 
