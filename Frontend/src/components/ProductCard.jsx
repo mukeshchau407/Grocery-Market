@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
-import { FaShoppingCart, FaStar, FaStarHalf } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
 const ProductCard = ({ product }) => {
   const { currency, addToCart, removeFromCart, cartItems, navigate } =
     useAppContext();
@@ -32,11 +32,15 @@ const ProductCard = ({ product }) => {
             {Array(5)
               .fill("")
               .map((_, i) => (
-                <span key={i} className="text-yellow-400 md:text-sm text-xs">
-                  {i < 4 ? <FaStar /> : <FaStarHalf />}
+                <span key={i}>
+                  {i < 4 ? (
+                    <FaStar className="text-yellow-400 md:text-sm text-xs" />
+                  ) : (
+                    <FaStar className="text-yellow-200 md:text-sm text-xs" />
+                  )}
                 </span>
               ))}
-            <p className="text-sm text-gray-600 ml-1">(4.5)</p>
+            <p className="text-sm text-gray-600 ml-1">(4)</p>
           </div>
           <div className="flex items-end justify-between mt-3">
             <p className="md:text-xl text-base font-medium text-orange-500">

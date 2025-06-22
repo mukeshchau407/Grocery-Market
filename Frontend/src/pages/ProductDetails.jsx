@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import { Link, useParams } from "react-router-dom";
-import { assets } from "../assets/assets";
+import ProductCard from "../components/ProductCard";
+import { FaStar } from "react-icons/fa";
 
 const ProductDetails = () => {
   const { products, navigate, currency, addToCart } = useAppContext();
-  const { _id } = useParams(); // ✅ fixed: changed from `id` to `_id`
+  const { _id } = useParams();
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
 
-  const product = products.find((item) => item._id === _id); // ✅ uses _id
+  const product = products.find((item) => item._id === _id);
 
   useEffect(() => {
     if (products.length > 0 && product) {
@@ -33,7 +34,7 @@ const ProductDetails = () => {
           <Link to={`/products/${product.category.toLowerCase()}`}>
             {product.category}
           </Link>
-          /<span className="text-indigo-500"> {product.name}</span>
+          /<span className="text-orange-500"> {product.name}</span>
         </p>
 
         <div className="flex flex-col md:flex-row gap-16 mt-4">
@@ -62,11 +63,13 @@ const ProductDetails = () => {
               {Array(5)
                 .fill("")
                 .map((_, i) => (
-                  <img
-                    className="md:w-4 w-3.5"
-                    src={i < 4 ? assets.star_icon : assets.star_dull_icon}
-                    alt=""
-                  />
+                  <span key={i}>
+                    {i < 4 ? (
+                      <FaStar className="text-yellow-400 md:text-sm text-xs" />
+                    ) : (
+                      <FaStar className="text-yellow-200 md:text-sm text-xs" />
+                    )}
+                  </span>
                 ))}
               <p className="text-base ml-2">(4)</p>
             </div>
@@ -76,8 +79,7 @@ const ProductDetails = () => {
                 MRP: {currency} {product.price}
               </p>
               <p className="text-2xl font-medium">
-                MRP: {currency}
-                {product.offerPrice}
+                MRP: {currency} {product.offerPrice}
               </p>
               <span className="text-gray-500/70">(inclusive of all taxes)</span>
             </div>
@@ -101,12 +103,35 @@ const ProductDetails = () => {
                   addToCart(product._id);
                   navigate("/cart");
                 }}
-                className="w-full py-3.5 cursor-pointer font-medium bg-indigo-500 text-white hover:bg-indigo-600 transition"
+                className="w-full py-3.5 cursor-pointer font-medium bg-orange-500 text-white hover:bg-orange-600 transition"
               >
                 Buy now
               </button>
             </div>
           </div>
+        </div>
+        {/* -------------- Related Product ------------ */}
+        <div className="flex flex-col items-center mt-20">
+          <div className="flex flex-col items-center w-max">
+            <p className="text-3xl font-medium">Related Products</p>
+            <div className="w-20 h-0.5 bg-orange-600 rounded-full mt-2"></div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6 lg:grid-cols-5 mt-6 w-full">
+            {relatedProducts
+              .filter((product) => product.inStock)
+              .map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))}
+          </div>
+          <button
+            onClick={() => {
+              navigate("/products");
+              scrollTo(0, 0);
+            }}
+            className="mx-auto cursor-pointer px-12 my-16  py-2.5 border rounded text-orange-500 hover:bg-orange-500/10 transition"
+          >
+            See More . . .
+          </button>
         </div>
       </div>
     )

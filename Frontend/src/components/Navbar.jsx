@@ -17,6 +17,7 @@ const Navbar = () => {
     navigate,
     setSearchQuery,
     searchQuery,
+    getCartCount,
   } = useAppContext();
   const logout = async () => {
     setUser(null);
@@ -76,7 +77,7 @@ const Navbar = () => {
         >
           <FaShoppingCart />
           <button className="absolute -top-2 -right-2 text-[10px] text-white text-center bg-orange-500 w-[14px] h-[14px] rounded-full">
-            5
+            {getCartCount()}
           </button>
         </div>
 
