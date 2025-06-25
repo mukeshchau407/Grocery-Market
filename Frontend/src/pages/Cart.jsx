@@ -112,7 +112,7 @@ const Cart = () => {
               onClick={() => removeFromCart(product._id)}
               className="cursor-pointer mx-auto"
             >
-              <FaTrash className="inline-block w-6 h-6" />
+              <FaTrash className="inline-block w-5 h-5 text-red-600" />
             </button>
           </div>
         ))}
