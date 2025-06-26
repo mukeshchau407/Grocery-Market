@@ -25,16 +25,33 @@ const SellerLogin = () => {
       >
         <div className="flex flex-col gap-5 m-auto items-start p-8 py-12 min-w-80 sm:min-w-88 rounded-lg shadow-xl border border-gray-200">
           <p className="text-2xl font-medium m-auto">
-            <span className="text-orange-500">Seller</span>Login
+            <span className="text-orange-500">Seller</span> Login
           </p>
           <div className="w-full">
             <p>Email</p>
-            <input type="email" />
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              type="email"
+              placeholder="Enter your email..."
+              className="border border-gray-200 rounded w-full p-2 mt-1 outline-orange-500"
+              required
+            />
           </div>
           <div className="w-full">
             <p>Password</p>
-            <input type="password" />
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              type="password"
+              placeholder="Enter your password..."
+              className="border border-gray-200 rounded w-full p-2 mt-1 outline-orange-500"
+              required
+            />
           </div>
+          <button className="bg-orange-500 hover:bg-orange-500/90 text-white w-full py-2 mt-1 rounded-md cursor-pointer">
+            Login
+          </button>
         </div>
       </form>
     )
