@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -14,6 +13,9 @@ import AddAddress from "./pages/AddAddress.jsx";
 import MyOrders from "./pages/MyOrders.jsx";
 import SellerLogin from "./seller/SellerLogin.jsx";
 import SellerLayout from "./sellerPages/SellerLayout.jsx";
+import AddProduct from "./sellerPages/AddProduct.jsx";
+import ProductList from "./sellerPages/ProductList.jsx";
+import Orders from "./sellerPages/Orders.jsx";
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller");
   const { showUserLogin, isSeller } = useAppContext();
@@ -36,7 +38,11 @@ const App = () => {
           <Route
             path="/seller"
             element={isSeller ? <SellerLayout /> : <SellerLogin />}
-          ></Route>
+          >
+            <Route index element={isSeller ? <AddProduct /> : null} />
+            <Route path="product-list" element={<ProductList />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
         </Routes>
       </div>
       {!isSellerPath && <Footer />}
