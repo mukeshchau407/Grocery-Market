@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppContext } from "../context/AppContext";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
 const ProductCard = ({ product }) => {
@@ -43,10 +42,10 @@ const ProductCard = ({ product }) => {
             <p className="text-sm text-gray-600 ml-1">(4)</p>
           </div>
           <div className="flex items-end justify-between mt-3">
-            <p className="md:text-xl text-base font-medium text-orange-500">
+            <p className="md:text-[18px] text-base font-medium text-orange-500">
               {currency}
               {product.offerPrice}{" "}
-              <span className="text-gray-500/60 md:text-sm text-xs line-through">
+              <span className="text-gray-500/60 md:text-[12px] text-xs line-through">
                 {currency}
                 {product.price}
               </span>

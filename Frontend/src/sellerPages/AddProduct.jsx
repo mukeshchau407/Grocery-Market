@@ -1,7 +1,24 @@
+import { useState } from "react";
+import { assets } from "../assets/assets";
+
 const AddProduct = () => {
+  const [files, setFiles] = useState([]);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [offrePrice, setOfferPrice] = useState("");
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="py-10 flex flex-col justify-between bg-white">
-      <form className="md:p-10 p-4 space-y-5 max-w-lg">
+    <div className="no-scrollbar flex h-[95vh] overflow-y-scroll flex-1 flex-col justify-between">
+      <form
+        onSubmit={onSubmitHandler}
+        className="md:p-10 p-4 space-y-5 max-w-lg"
+      >
         <div>
           <p className="text-base font-medium">Product Image</p>
           <div className="flex flex-wrap items-center gap-3 mt-2">
@@ -10,6 +27,11 @@ const AddProduct = () => {
               .map((_, index) => (
                 <label key={index} htmlFor={`image${index}`}>
                   <input
+                    onChange={(e) => {
+                      const updatedFiles = [...files];
+                      updatedFiles[index] = e.target.files[0];
+                      setFiles(updatedFiles);
+                    }}
                     accept="image/*"
                     type="file"
                     id={`image${index}`}
@@ -17,7 +39,11 @@ const AddProduct = () => {
                   />
                   <img
                     className="max-w-24 cursor-pointer"
-                    src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/uploadArea.png"
+                    src={
+                      files[index]
+                        ? URL.createObjectURL(files[index])
+                        : assets.upload_area
+                    }
                     alt="uploadArea"
                     width={100}
                     height={100}
