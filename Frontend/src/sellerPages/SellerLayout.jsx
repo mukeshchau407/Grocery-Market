@@ -3,7 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { FaBox, FaList, FaWpforms } from "react-icons/fa";
 
 const SellerLayout = () => {
-  const { serSellerLayout } = useAppContext();
+  const { setSellerLayout } = useAppContext();
 
   const logout = async () => {
     setIsSeller(false);
@@ -47,7 +47,7 @@ const SellerLayout = () => {
                                 : "hover:bg-gray-100/90 border-white"
                             }`}
             >
-              {item.icon}
+              <span>{item.icon}</span>
               <p className="md:block hidden text-center">{item.name}</p>
             </NavLink>
           ))}
